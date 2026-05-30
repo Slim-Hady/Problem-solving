@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long
+#define vi vector<int>
+#define vll vector<long long>
+#define pb push_back
+#define mp make_pair
+#define pii pair<int, int>
+#define pll pair<long long, long long>
+#define all(x) (x).begin(), (x).end()
+#define sz(x) ((int)(x).size())
+#define MOD 1000000007
+#define endl '\n'
+#define debug(x) cerr << #x << " = " << x << endl;
+#define SlimHady ios::sync_with_stdio(false); cin.tie(0);
+#define INF 1e9
+ 
+ 
+ 
+ 
+void solve() {
+    int n , t;
+    cin >> n >> t ;
+    vi coins(n);
+    for (auto &i : coins ) cin >> i;
+    vi dp(t + 1 , 0);
+    dp[0] = 1;
+    for (int i = 1; i <= t; i++) {
+        for (int coin : coins) {
+            if (i - coin >= 0)
+                dp[i] = (dp[i] + dp[i - coin]) % MOD;
+        }
+    }
+    cout << dp[t] % MOD;
+}
+ 
+int main() {
+    SlimHady
+ 
+    #ifndef ONLINE_JUDGE
+        freopen("in.txt", "r", stdin);
+        freopen("out.txt", "w", stdout);
+    #endif
+ 
+    int t = 1;
+    //cin >> t;
+    while (t--) {
+        solve();
+    }
+    return 0;
+}
